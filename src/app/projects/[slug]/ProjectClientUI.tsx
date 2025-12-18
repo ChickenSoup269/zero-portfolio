@@ -14,14 +14,57 @@ import {
   ImageIcon,
   Maximize2,
   X,
-  ChevronLeft, // Mới
-  ChevronRight, // Mới
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
+  User,
+  Tag,
+  Activity,
 } from "lucide-react"
 import Image from "next/image"
+
+// Helper để lấy thông tin chi tiết dựa trên tên dự án
+// (Giúp bạn không cần sửa database/file data gốc mà vẫn có thông tin hiển thị đúng)
+const getProjectMeta = (title: string) => {
+  if (title.includes("Bookmark")) {
+    return {
+      year: "2025",
+      type: "Browser Extension",
+      role: "Solo Developer",
+      status: "Active / Maintaining",
+    }
+  }
+  if (title.includes("Movie")) {
+    return {
+      year: "2025",
+      type: "University Capstone", // Đồ án tốt nghiệp
+      role: "Frontend Lead",
+      status: "Completed",
+    }
+  }
+  if (title.includes("Steam")) {
+    return {
+      year: "2024",
+      type: "UI Clone / Practice",
+      role: "Frontend Developer",
+      status: "Completed",
+    }
+  }
+  // Mặc định
+  return {
+    year: "2024",
+    type: "Personal Project",
+    role: "Fullstack Developer",
+    status: "Completed",
+  }
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ProjectClientUI({ project }: { project: any }) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+  // Lấy thông tin meta tự động
+  const meta = getProjectMeta(project.title)
 
   // Animation Variants
   const containerVariants = {
@@ -35,7 +78,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
   }
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+    <div className="relative min-h-screen w-full overflow-hidden bg-background text-foreground">
       {/* 1. BACKGROUND GRADIENTS & GRID (Z-Index thấp nhất) */}
       <div className="fixed inset-0 -z-10 h-full w-full bg-background">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -53,7 +96,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
             asChild
             className="mb-8 pl-0 hover:pl-2 transition-all text-muted-foreground hover:text-foreground"
           >
-            <Link href="/">
+            <Link href="/featured-projects">
               <ArrowLeft className="mr-2 h-4 w-4" /> Back to Projects
             </Link>
           </Button>
@@ -74,12 +117,12 @@ export default function ProjectClientUI({ project }: { project: any }) {
             <Image
               src={project.imageUrl}
               alt={project.title}
-              width={500}
+              width={800}
               height={500}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             {/* Overlay nhẹ */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
           </motion.div>
 
           {/* Cột Thông Tin Header */}
@@ -88,24 +131,24 @@ export default function ProjectClientUI({ project }: { project: any }) {
             className="md:col-span-2 flex flex-col justify-center space-y-6"
           >
             <div>
-              <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+              <h1 className="text-3xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
                 {project.title}
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 {project.description}
               </p>
             </div>
 
             <div>
-              <h3 className="font-bold text-sm text-foreground/80 uppercase tracking-wider mb-3">
-                Technologies
+              <h3 className="font-bold text-xs text-foreground/60 uppercase tracking-widest mb-3">
+                Tech Stack
               </h3>
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map((tech: string) => (
                   <Badge
                     key={tech}
-                    variant="secondary"
-                    className="px-3 py-1 text-sm border-primary/20 bg-primary/10 text-primary hover:bg-primary/20"
+                    variant="outline"
+                    className="px-3 py-1 text-sm bg-primary/5 hover:bg-primary/10 border-primary/20 text-primary"
                   >
                     {tech}
                   </Badge>
@@ -140,7 +183,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
 
         {/* 3. MAIN CONTENT GRID */}
         <div className="grid md:grid-cols-3 gap-10">
-          {/* CỘT TRÁI (LỚN) */}
+          {/* CỘT TRÁI (LỚN) - Overview & Media */}
           <div className="md:col-span-2 space-y-12">
             {/* Overview */}
             <motion.section
@@ -178,7 +221,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
               </motion.section>
             )}
 
-            {/* 4. IMAGE GALLERY (Horizontal Scroll with Arrows) */}
+            {/* Gallery */}
             {project.gallery && project.gallery.length > 0 && (
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
@@ -190,27 +233,22 @@ export default function ProjectClientUI({ project }: { project: any }) {
                   <ImageIcon className="h-6 w-6 text-blue-500" /> Gallery
                 </h2>
 
-                {/* Wrapper chứa scroll ngang & Buttons */}
                 <div className="relative group/gallery w-full">
-                  {/* --- NÚT SCROLL TRÁI --- */}
                   <button
                     onClick={() => {
-                      // Scroll sang trái 300px
                       const container =
                         document.getElementById("gallery-container")
                       if (container)
                         container.scrollBy({ left: -300, behavior: "smooth" })
                     }}
                     className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white backdrop-blur-sm transition-all opacity-0 group-hover/gallery:opacity-100 disabled:opacity-0 translate-x-2"
-                    aria-label="Scroll Left"
                   >
                     <ChevronLeft className="w-6 h-6" />
                   </button>
 
-                  {/* --- CONTAINER CHỨA ẢNH --- */}
                   <div
                     id="gallery-container"
-                    className="flex gap-4 overflow-x-auto pb-4 pt-2 px-1 snap-x snap-mandatory scroll-smooth"
+                    className="flex gap-4 overflow-x-auto pb-4 pt-2 px-1 snap-x snap-mandatory scroll-smooth hide-scrollbar"
                     style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                   >
                     {project.gallery.map((img: string, idx: number) => (
@@ -219,47 +257,36 @@ export default function ProjectClientUI({ project }: { project: any }) {
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setSelectedImage(img)}
-                        // min-w-[200px]: Chiều rộng cố định
                         className="relative min-w-[200px] h-[140px] rounded-xl overflow-hidden border shadow-sm cursor-pointer snap-start bg-muted shrink-0"
                       >
-                        <img
+                        <Image
                           src={img}
                           alt={`Gallery ${idx}`}
-                          className="w-full h-full object-cover transition-all duration-500 hover:brightness-110"
+                          width={300}
+                          height={200}
+                          className="w-full h-full object-cover"
                         />
-
-                        {/* Icon phóng to */}
                         <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity duration-300">
                           <Maximize2 className="text-white w-6 h-6 drop-shadow-md" />
                         </div>
                       </motion.div>
                     ))}
-                    {/* Dummy div để tạo khoảng trống cuối cùng */}
                     <div className="w-1 shrink-0" />
                   </div>
 
-                  {/* --- NÚT SCROLL PHẢI --- */}
                   <button
                     onClick={() => {
-                      // Scroll sang phải 300px
                       const container =
                         document.getElementById("gallery-container")
                       if (container)
                         container.scrollBy({ left: 300, behavior: "smooth" })
                     }}
                     className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white backdrop-blur-sm transition-all opacity-0 group-hover/gallery:opacity-100 -translate-x-2"
-                    aria-label="Scroll Right"
                   >
                     <ChevronRight className="w-6 h-6" />
                   </button>
-
-                  {/* Hiệu ứng mờ dần bên phải (Nằm dưới nút bấm nhưng trên ảnh) */}
                   <div className="absolute right-0 top-0 bottom-4 w-16 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
                 </div>
-
-                <p className="text-xs text-muted-foreground mt-1 italic flex items-center gap-1">
-                  Click images to zoom <Maximize2 className="w-3 h-3" />
-                </p>
               </motion.section>
             )}
           </div>
@@ -280,7 +307,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
               <ul className="space-y-4">
                 {project.features.map((feature: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-3 group">
-                    <div className="mt-1 p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                    <div className="mt-1 p-1 rounded-full bg-green-100 dark:bg-green-900/30 shrink-0">
                       <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                     </div>
                     <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
@@ -291,21 +318,42 @@ export default function ProjectClientUI({ project }: { project: any }) {
               </ul>
             </div>
 
-            {/* Info Card */}
+            {/* Project Details Card - ĐÃ CẬP NHẬT */}
             <div className="p-6 rounded-2xl border bg-muted/20">
               <h3 className="font-bold text-lg mb-4">Project Details</h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between py-2 border-b border-border/50">
-                  <span className="text-muted-foreground">Year</span>
-                  <span className="font-medium">2024</span>
+              <div className="space-y-4 text-sm">
+                <div className="flex justify-between items-center py-2 border-b border-border/50">
+                  <span className="text-muted-foreground flex items-center gap-2">
+                    <Calendar className="w-4 h-4" /> Year
+                  </span>
+                  <span className="font-medium">{meta.year}</span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-border/50">
-                  <span className="text-muted-foreground">Type</span>
-                  <span className="font-medium">Personal</span>
+
+                <div className="flex justify-between items-center py-2 border-b border-border/50">
+                  <span className="text-muted-foreground flex items-center gap-2">
+                    <Tag className="w-4 h-4" /> Type
+                  </span>
+                  <span className="font-medium text-right">{meta.type}</span>
                 </div>
-                <div className="flex justify-between py-2">
-                  <span className="text-muted-foreground">Role</span>
-                  <span className="font-medium">Fullstack Dev</span>
+
+                <div className="flex justify-between items-center py-2 border-b border-border/50">
+                  <span className="text-muted-foreground flex items-center gap-2">
+                    <User className="w-4 h-4" /> Role
+                  </span>
+                  <span className="font-medium">{meta.role}</span>
+                </div>
+
+                <div className="flex justify-between items-center py-2">
+                  <span className="text-muted-foreground flex items-center gap-2">
+                    <Activity className="w-4 h-4" /> Status
+                  </span>
+                  <Badge
+                    variant={
+                      meta.status === "Completed" ? "default" : "secondary"
+                    }
+                  >
+                    {meta.status}
+                  </Badge>
                 </div>
               </div>
             </div>
@@ -321,11 +369,10 @@ export default function ProjectClientUI({ project }: { project: any }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 cursor-zoom-out"
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 cursor-zoom-out"
           >
-            {/* Nút Close */}
             <button className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-50">
-              <X className="w-6 h-6" />
+              <X className="w-8 h-8" />
             </button>
 
             <motion.div
@@ -333,15 +380,15 @@ export default function ProjectClientUI({ project }: { project: any }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-5xl w-full max-h-[90vh] aspect-video rounded-lg overflow-hidden"
-              onClick={(e) => e.stopPropagation()} // Click vào ảnh không đóng
+              className="relative max-w-7xl w-full max-h-[90vh] flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
             >
               <Image
                 src={selectedImage}
                 alt="Full Preview"
-                width={500}
-                height={500}
-                className="w-full h-full object-contain"
+                width={1200}
+                height={800}
+                className="max-w-full max-h-[90vh] object-contain rounded-md"
               />
             </motion.div>
           </motion.div>
