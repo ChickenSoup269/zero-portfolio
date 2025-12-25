@@ -47,6 +47,10 @@ export default function Navbar() {
   const { setTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage() // Lấy t từ context
 
+  function setFont(arg0: string): void {
+    throw new Error("Function not implemented.")
+  }
+
   return (
     <header className="sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b shadow-sm z-50">
       <nav className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
