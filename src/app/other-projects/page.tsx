@@ -74,6 +74,26 @@ const allProjects = [
     liveUrl: null,
     hasDetail: false,
   },
+  {
+    id: "The-cofffee-1995",
+    title: "The Coffee 1995",
+    description:
+      "Một trang web giới thiệu quán cà phê, được thiết kế theo phong cách cổ điển, sử dụng HTML, CSS và JavaScript.",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/ChickenSoup269/The-cofffee-1995",
+    liveUrl: null,
+    hasDetail: false,
+  },
+  {
+    id: "Blog-Coffe_HTML_CSS_JS",
+    title: "Blog Coffee",
+    description:
+      "Một blog đơn giản về cà phê, được xây dựng với HTML, CSS và JavaScript cơ bản.",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/ChickenSoup269/Blog-Coffe_HTML_CSS_JS",
+    liveUrl: null,
+    hasDetail: false,
+  },
 ]
 
 const ITEMS_PER_PAGE = 6
