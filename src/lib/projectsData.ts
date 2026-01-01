@@ -34,6 +34,8 @@ export const projectsData: Project[] = [
       "projBookmarkManagerFeature5",
     ],
     githubUrl: "https://github.com/ChickenSoup269/bookmark-manager",
+    liveUrl:
+      "https://chromewebstore.google.com/detail/jhcoclfodfnchlddakkeegkogajdpgce?authuser=0&hl=en",
     videoId: "3mcsG_p_j7s",
     gallery: [
       "https://github.com/ChickenSoup269/imagesForRepo/raw/main/img_repo_extension_bookmarks/about_bookmark/1.png?raw=true",
