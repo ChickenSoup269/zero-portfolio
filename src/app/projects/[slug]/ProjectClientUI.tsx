@@ -28,7 +28,7 @@ import Image from "next/image"
 const getProjectMeta = (titleKey: string, t: (key: string) => string) => {
   if (titleKey.includes("Bookmark")) {
     return {
-      year: "2025",
+      year: "2026",
       type: t("metaBookmarkManagerType"),
       role: t("metaBookmarkManagerRole"),
       status: t("statusActive"),
@@ -217,9 +217,9 @@ export default function ProjectClientUI({ project }: { project: any }) {
                 <h2 className="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-2">
                   <Youtube className="h-6 w-6 text-red-600" /> {t("videoDemo")}
                 </h2>
-                <div className="rounded-2xl overflow-hidden border shadow-lg aspect-video bg-black">
+                <div className="relative w-full pt-[56.25%] rounded-2xl overflow-hidden border shadow-lg bg-black">
                   <iframe
-                    className="w-full h-full"
+                    className="absolute top-0 left-0 w-full h-full"
                     src={`https://www.youtube.com/embed/${project.videoId}`}
                     title="Project Demo Video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

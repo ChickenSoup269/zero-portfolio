@@ -20,7 +20,7 @@ interface FontContextType {
 const FontContext = createContext<FontContextType | undefined>(undefined)
 
 export function FontProvider({ children }: { children: ReactNode }) {
-  const [font, setFont] = useState<Font>("default")
+  const [font, setFont] = useState<Font>("gohu")
 
   useEffect(() => {
     const storedFont = localStorage.getItem("font") as Font | null

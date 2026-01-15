@@ -11,6 +11,8 @@ interface LanguageContextType {
   t: (key: string) => string
 }
 
+const currentYear = new Date().getFullYear()
+
 const translations = {
   en: {
     // Navbar
@@ -125,7 +127,7 @@ const translations = {
     projSteamCloneFeature5: "Comment and rate games",
 
     // Footer
-    footerRights: "© 2025 Trần Phước Thiện. All Rights Reserved.",
+    footerRights: `© ${currentYear} Trần Phước Thiện. All Rights Reserved.`,
     copied: "Copied!",
     builtWith: "Built with",
   },
@@ -241,7 +243,7 @@ const translations = {
     projSteamCloneFeature5: "Bình luận và đánh giá game",
 
     // Footer
-    footerRights: "© 2025 Trần Phước Thiện. Mọi quyền được bảo lưu.",
+    footerRights: `© ${currentYear} Trần Phước Thiện. Mọi quyền được bảo lưu.`,
     copied: "Đã sao chép!",
     builtWith: "Xây dựng với",
   },
