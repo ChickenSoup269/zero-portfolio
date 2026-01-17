@@ -23,7 +23,7 @@ export const projectsData: Project[] = [
     title: "projBookmarkManagerTitle",
     description: "projBookmarkManagerDesc",
     imageUrl:
-      "https://github.com/ChickenSoup269/imagesForRepo/raw/main/img_repo_extension_bookmarks/about_bookmark/1.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_114/2.png?raw=true",
     techStack: ["HTML", "CSS", "JavaScript"],
     content: "projBookmarkManagerContent",
     features: [
@@ -38,11 +38,9 @@ export const projectsData: Project[] = [
       "https://chromewebstore.google.com/detail/jhcoclfodfnchlddakkeegkogajdpgce?authuser=0&hl=en",
     videoId: "3mcsG_p_j7s",
     gallery: [
-      "https://github.com/ChickenSoup269/imagesForRepo/raw/main/img_repo_extension_bookmarks/about_bookmark/1.png?raw=true",
-      "https://github.com/ChickenSoup269/imagesForRepo/raw/main/img_repo_extension_bookmarks/about_bookmark/2.png?raw=true",
-      "https://github.com/ChickenSoup269/imagesForRepo/raw/main/img_repo_extension_bookmarks/about_bookmark/3.png?raw=true",
-      "https://github.com/ChickenSoup269/imagesForRepo/raw/main/img_repo_extension_bookmarks/about_bookmark/4.png?raw=true",
-      "https://github.com/ChickenSoup269/imagesForRepo/raw/main/img_repo_extension_bookmarks/about_bookmark/5.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_114/1.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_114/2.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_114/3.png?raw=true",
     ],
     featured: true,
   },

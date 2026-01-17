@@ -41,7 +41,7 @@ export default function FeaturedProjects() {
           {projectsData.map((project) => (
             <motion.div key={project.slug}>
               <Link href={`/projects/${project.slug}`} className="block">
-                <Card className="group relative h-80 w-full overflow-hidden rounded-xl border-2 border-transparent hover:border-primary/50 shadow-lg transition-all duration-300 cursor-pointer">
+                <Card className="group relative h-65  w-full overflow-hidden rounded-xl border-2 border-transparent hover:border-primary/50 shadow-lg transition-all duration-300 cursor-pointer">
                   {/* Lớp ảnh nền */}
                   <Image
                     src={project.imageUrl}

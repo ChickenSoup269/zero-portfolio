@@ -132,7 +132,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
             className="md:col-span-2 flex flex-col justify-center space-y-6"
           >
             <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text ">
                 {t(project.title)}
               </h1>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
