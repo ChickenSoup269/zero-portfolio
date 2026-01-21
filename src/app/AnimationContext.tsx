@@ -10,7 +10,7 @@ import React, {
   useCallback,
 } from "react"
 
-export type AnimationType = "none" | "rain" | "war"
+export type AnimationType = "none" | "rain" | "war" | "snake"
 
 interface GameController {
   startGame: () => void
@@ -23,6 +23,10 @@ interface AnimationContextValue {
   setIsBossActive: (value: boolean) => void
   isGameOver: boolean
   setIsGameOver: (value: boolean) => void
+  isVictory: boolean
+  setIsVictory: (value: boolean) => void
+  currentScore: number
+  setCurrentScore: (value: number) => void
   gameController: GameController | null
   setGameController: (controller: GameController | null) => void
 }
@@ -35,13 +39,15 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
   const [animation, setAnimation] = useState<AnimationType>("rain")
   const [isBossActive, setIsBossActive] = useState(false)
   const [isGameOver, setIsGameOver] = useState(false)
+  const [isVictory, setIsVictory] = useState(false)
+  const [currentScore, setCurrentScore] = useState(0)
   const [gameController, setGameController] = useState<GameController | null>(null)
 
   useEffect(() => {
     const savedState = localStorage.getItem(
       "animation-type"
     ) as AnimationType | null
-    if (savedState && ["none", "rain", "war"].includes(savedState)) {
+    if (savedState && ["none", "rain", "war", "snake"].includes(savedState)) {
       setAnimation(savedState)
     } else {
       setAnimation("rain") // Default value
@@ -62,6 +68,10 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
         setIsBossActive,
         isGameOver,
         setIsGameOver,
+        isVictory,
+        setIsVictory,
+        currentScore,
+        setCurrentScore,
         gameController,
         setGameController,
       }}

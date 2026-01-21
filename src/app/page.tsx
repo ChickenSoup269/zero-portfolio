@@ -27,6 +27,7 @@ import Image from "next/image"
 import aboutImage from "./image/about.png"
 import PixelRain from "@/components/PixelRain"
 import PixelWar from "@/components/PixelWar"
+import PixelSnake from "@/components/PixelSnake"
 // Import Context
 import { useLanguage } from "@/app/LanguageContext"
 import { useAnimation } from "@/app/AnimationContext"
@@ -62,7 +63,7 @@ const fadeIn: Variants = {
 
 export default function Home() {
   const { t } = useLanguage() // Gọi hook useLanguage
-  const { animation, isBossActive, isGameOver, gameController } = useAnimation()
+  const { animation, isBossActive, isGameOver, isVictory, currentScore, gameController } = useAnimation()
 
   // Move data inside component to use translation "t"
   const skills = [
@@ -97,6 +98,8 @@ export default function Home() {
         return <PixelRain />
       case "war":
         return <PixelWar />
+      case "snake":
+        return <PixelSnake />
       case "none":
       default:
         return (
@@ -115,25 +118,34 @@ export default function Home() {
         {renderBackground()}
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          {isGameOver ? (
+          {isGameOver || isVictory ? (
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
+              className="bg-background/80 backdrop-blur-md p-10 rounded-3xl border-2 border-primary/20 shadow-2xl inline-block"
             >
-              <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 text-destructive">
-                GAME OVER
+              <h1 className={`text-6xl md:text-8xl font-extrabold tracking-tight mb-4 ${isVictory ? "text-primary italic animate-pulse" : "text-destructive"}`}>
+                {isVictory ? t("victory") : "GAME OVER"}
               </h1>
+              <div className="mb-8 space-y-2">
+                <p className="text-2xl text-muted-foreground uppercase tracking-widest font-bold">
+                  {t("yourScore")}: <span className="text-primary">{currentScore}</span>
+                </p>
+                <p className="text-sm text-muted-foreground/60 font-medium">
+                  {t("bestScoreKey")}: {typeof window !== "undefined" ? localStorage.getItem("pixelWarBestScore") || 0 : 0}
+                </p>
+              </div>
               <Button
                 size="lg"
-                className="text-lg px-8 rounded-full shadow-lg"
+                className="text-lg px-10 rounded-full shadow-lg h-14 hover:scale-105 transition-transform"
                 onClick={() => gameController?.startGame()}
               >
-                Play Again
+                {t("viewProjects") === "Xem dự án" ? "Chơi lại" : "Play Again"}
               </Button>
             </motion.div>
           ) : (
-            !isBossActive && (
+            animation !== "war" && !isBossActive && (
               <>
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}

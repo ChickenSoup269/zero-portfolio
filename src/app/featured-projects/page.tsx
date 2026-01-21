@@ -3,7 +3,7 @@
 import { useLanguage } from "@/app/LanguageContext"
 import Link from "next/link"
 import Image from "next/image"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { projectsData } from "@/lib/projectsData" // Sử dụng dữ liệu tập trung
@@ -64,32 +64,57 @@ export default function FeaturedProjects() {
                   </div>
 
                   {/* Nút và thông tin hiện ra khi hover */}
-
-                  <div className="absolute inset-0 z-10 flex flex-col justify-center items-center p-6 bg-black/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
-                    <div className="text-center">
-                      <motion.h3
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.1, duration: 0.3 }}
-                        className="text-2xl font-bold text-white mb-6"
-                      >
-                        {t(project.title)}
-                      </motion.h3>
-
-                      <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.25, duration: 0.3 }}
-                      >
-                        <Button
-                          variant="outline"
-                          className="w-full sm:w-40 text-base sm:text-lg px-6 py-3 border-2 border-white text-white bg-white/10 hover:bg-white hover:text-black hover:border-white transition-all duration-300 pointer-events-none"
+                  <AnimatePresence>
+                    <div className="absolute inset-0 z-10 flex flex-col justify-center items-center p-6 bg-black/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="text-center w-full">
+                        <motion.h3
+                          initial={{ y: 20, opacity: 0 }}
+                          whileInView={{ y: 0, opacity: 1 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 20,
+                            delay: 0.1,
+                          }}
+                          className="text-2xl font-bold text-white mb-2"
                         >
-                          {t("details")}
-                        </Button>
-                      </motion.div>
+                          {t(project.title)}
+                        </motion.h3>
+
+                        <motion.p
+                          initial={{ y: 30, opacity: 0 }}
+                          whileInView={{ y: 0, opacity: 1 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 250,
+                            damping: 25,
+                            delay: 0.2,
+                          }}
+                          className="text-sm text-gray-200 mb-6 max-w-xs mx-auto line-clamp-3"
+                        >
+                          {t(project.description)}
+                        </motion.p>
+
+                        <motion.div
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          whileInView={{ scale: 1, opacity: 1 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 20,
+                            delay: 0.3,
+                          }}
+                        >
+                          <Button
+                            variant="outline"
+                            className="w-full sm:w-40 text-base sm:text-lg px-6 py-3 border-2 border-white text-white bg-white/10 hover:bg-white hover:text-black hover:border-white transition-all duration-300 pointer-events-none shadow-xl"
+                          >
+                            {t("details")}
+                          </Button>
+                        </motion.div>
+                      </div>
                     </div>
-                  </div>
+                  </AnimatePresence>
                 </Card>
               </Link>
             </motion.div>

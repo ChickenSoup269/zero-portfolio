@@ -85,6 +85,8 @@ const translations = {
     statusActive: "Active / Maintaining",
     statusCompleted: "Completed",
     metaBookmarkManagerType: "Browser Extension",
+    projectReadme: "Project README",
+    documentation: "Documentation",
     metaBookmarkManagerRole: "Solo Developer",
     metaZeroMovieType: "University Capstone",
     metaZeroMovieRole: "Frontend Lead",
@@ -92,6 +94,9 @@ const translations = {
     metaSteamCloneRole: "Frontend Developer",
     metaDefaultType: "Personal Project",
     metaDefaultRole: "Fullstack Developer",
+    victory: "VICTORY!",
+    yourScore: "Your Score",
+    bestScoreKey: "Best Score",
 
     // Project Specific Content
     projBookmarkManagerTitle: "Zero Bookmark Manager",
@@ -130,6 +135,7 @@ const translations = {
     footerRights: `© ${currentYear} Trần Phước Thiện. All Rights Reserved.`,
     copied: "Copied!",
     builtWith: "Built with",
+    loading: "Loading",
   },
   vi: {
     // Navbar
@@ -202,13 +208,18 @@ const translations = {
     statusActive: "Đang hoạt động / Bảo trì",
     statusCompleted: "Đã hoàn thành",
     metaBookmarkManagerType: "Tiện ích mở rộng",
+    projectReadme: "README Dự án",
+    documentation: "Tài liệu kỹ thuật",
     metaBookmarkManagerRole: "Solo Developer",
     metaZeroMovieType: "Đồ án tốt nghiệp",
     metaZeroMovieRole: "Frontend Lead",
     metaSteamCloneType: "UI Clone / Luyện tập",
     metaSteamCloneRole: "Frontend Developer",
     metaDefaultType: "Dự án cá nhân",
-    metaDefaultRole: "Fullstack Developer",
+    metaDefaultRole: "Nhà phát triển Fullstack",
+    victory: "CHIẾN THẮNG!",
+    yourScore: "Điểm của bạn",
+    bestScoreKey: "Kỷ lục",
 
     // Project Specific Content
     projBookmarkManagerTitle: "Zero Bookmark Manager",
@@ -246,6 +257,7 @@ const translations = {
     footerRights: `© ${currentYear} Trần Phước Thiện. Mọi quyền được bảo lưu.`,
     copied: "Đã sao chép!",
     builtWith: "Xây dựng với",
+    loading: "Đang tải",
   },
 }
 

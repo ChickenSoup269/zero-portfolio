@@ -68,14 +68,14 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex flex-1 justify-center space-x-2">
-          <Button variant="ghost" asChild>
+        <div className="hidden md:flex flex-1 justify-center items-center gap-1 lg:gap-2 px-2">
+          <Button variant="ghost" asChild className="whitespace-nowrap">
             <Link href="/">{t("home")}</Link>
           </Button>
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" asChild className="whitespace-nowrap">
             <Link href="/featured-projects">{t("featuredProjects")}</Link>
           </Button>
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" asChild className="whitespace-nowrap">
             <Link href="/other-projects">{t("otherProjects")}</Link>
           </Button>
         </div>
@@ -86,7 +86,7 @@ export default function Navbar() {
             value={language}
             onValueChange={(value: "en" | "vi") => setLanguage(value)}
           >
-            <SelectTrigger className="w-[120px] h-9 shadow-md">
+            <SelectTrigger className="w-[130px] h-9 shadow-md whitespace-nowrap overflow-visible">
               <SelectValue placeholder="Lang" />
             </SelectTrigger>
             <SelectContent>
@@ -167,6 +167,9 @@ export default function Navbar() {
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setAnimation("war")}>
                       Pixel War
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setAnimation("snake")}>
+                      Pixel Snake
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
                 </DropdownMenuPortal>
@@ -327,6 +330,9 @@ export default function Navbar() {
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => setAnimation("war")}>
                         Pixel War
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setAnimation("snake")}>
+                        Pixel Snake
                       </DropdownMenuItem>
                     </DropdownMenuSubContent>
                   </DropdownMenuPortal>
