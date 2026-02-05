@@ -53,7 +53,7 @@ export const projectsData: Project[] = [
     imageUrl:
       "https://github.com/ChickenSoup269/Zero_Movie/raw/main/frontend/public/screenshots/trangchinh.png",
     techStack: [
-      "React.js",
+      "Next.js",
       "Node.js",
       "Express.js",
       "MongoDB",
