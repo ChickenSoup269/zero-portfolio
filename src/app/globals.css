@@ -120,6 +120,41 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Ocean Theme - Màu biển nhẹ nhàng và trắng */
+.ocean {
+  --background: oklch(0.99 0.01 220); /* Trắng với hơi xanh biển nhạt */
+  --foreground: oklch(0.25 0.05 240); /* Xanh đậm cho text */
+  --card: oklch(1 0 0); /* Trắng tinh */
+  --card-foreground: oklch(0.25 0.05 240);
+  --popover: oklch(0.99 0.01 220);
+  --popover-foreground: oklch(0.25 0.05 240);
+  --primary: oklch(0.55 0.15 230); /* Xanh dương biển */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.92 0.03 220); /* Xanh nhạt */
+  --secondary-foreground: oklch(0.25 0.05 240);
+  --muted: oklch(0.95 0.02 220); /* Xanh rất nhạt */
+  --muted-foreground: oklch(0.45 0.05 235);
+  --accent: oklch(0.65 0.12 200); /* Xanh ngọc bích */
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.88 0.02 220); /* Viền xanh nhạt */
+  --input: oklch(0.88 0.02 220);
+  --ring: oklch(0.55 0.15 230);
+  --chart-1: oklch(0.55 0.15 230); /* Xanh biển */
+  --chart-2: oklch(0.65 0.12 200); /* Xanh ngọc */
+  --chart-3: oklch(0.7 0.1 180); /* Xanh lá nhạt */
+  --chart-4: oklch(0.75 0.08 150); /* Xanh lơ */
+  --chart-5: oklch(0.6 0.13 210); /* Xanh azure */
+  --sidebar: oklch(0.99 0.01 220);
+  --sidebar-foreground: oklch(0.25 0.05 240);
+  --sidebar-primary: oklch(0.55 0.15 230);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.92 0.03 220);
+  --sidebar-accent-foreground: oklch(0.25 0.05 240);
+  --sidebar-border: oklch(0.88 0.02 220);
+  --sidebar-ring: oklch(0.55 0.15 230);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

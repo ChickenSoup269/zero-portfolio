@@ -12,6 +12,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       defaultTheme="system"
       enableSystem
       disableTransitionOnChange
+      themes={["light", "dark", "ocean"]}
     >
       <AnimationProvider>
         <FontProvider>

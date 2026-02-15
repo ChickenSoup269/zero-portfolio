@@ -16,6 +16,7 @@ import {
 } from "lucide-react"
 import { useTheme } from "next-themes"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useLanguage } from "@/app/LanguageContext"
 import { useFont } from "@/app/FontContext"
 import { useAnimation } from "@/app/AnimationContext"
@@ -50,43 +51,74 @@ import {
 } from "@/components/ui/dialog"
 import Image from "next/image"
 import CV from "@/app/image/CV.png"
+import logo from "@/app/image/logo2.png"
 
 export default function Navbar() {
   const { setTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
   const { setFont } = useFont()
   const { setAnimation } = useAnimation()
+  const pathname = usePathname()
+
+  // Helper để check active state
+  const isActive = (path: string) => {
+    if (path === "/") return pathname === "/"
+    if (path === "/featured-projects")
+      return (
+        pathname === "/featured-projects" || pathname?.startsWith("/projects/")
+      )
+    return pathname === path
+  }
 
   return (
-    <header className="sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b shadow-sm z-50">
-      <nav className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <Link
-          href="/"
-          className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-orange-400 animate-gradient"
-        >
-          Zero Portfolio
+    <header className="sticky top-0 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 border-b shadow-sm z-50">
+      <nav className="max-w-7xl mx-auto px-4 py-2.5 flex justify-between items-center gap-4">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
+          <Image
+            src={logo}
+            alt="Zero Portfolio Logo"
+            width={200}
+            height={200}
+            className="h-10 w-auto"
+            priority
+          />
+          <span className="text-xl md:text-2xl font-bold bg-clip-text">
+            Zero Portfolio
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex flex-1 justify-center items-center gap-1 lg:gap-2 px-2">
-          <Button variant="ghost" asChild className="whitespace-nowrap">
+          <Button
+            variant={isActive("/") ? "default" : "ghost"}
+            asChild
+            className="whitespace-nowrap h-10"
+          >
             <Link href="/">{t("home")}</Link>
           </Button>
-          <Button variant="ghost" asChild className="whitespace-nowrap">
+          <Button
+            variant={isActive("/featured-projects") ? "default" : "ghost"}
+            asChild
+            className="whitespace-nowrap h-10"
+          >
             <Link href="/featured-projects">{t("featuredProjects")}</Link>
           </Button>
-          <Button variant="ghost" asChild className="whitespace-nowrap">
+          <Button
+            variant={isActive("/other-projects") ? "default" : "ghost"}
+            asChild
+            className="whitespace-nowrap h-10"
+          >
             <Link href="/other-projects">{t("otherProjects")}</Link>
           </Button>
         </div>
 
         {/* Desktop Controls */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2 shrink-0">
           <Select
             value={language}
             onValueChange={(value: "en" | "vi") => setLanguage(value)}
           >
-            <SelectTrigger className="w-[130px] h-9 shadow-md whitespace-nowrap overflow-visible">
+            <SelectTrigger className="w-[130px] h-10 shadow-sm whitespace-nowrap overflow-visible">
               <SelectValue placeholder="Lang" />
             </SelectTrigger>
             <SelectContent>
@@ -100,7 +132,7 @@ export default function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-9 w-9 shadow-md cursor-pointer"
+                className="h-10 w-10 shadow-sm cursor-pointer"
               >
                 <CaseSensitive className="h-[1.2rem] w-[1.2rem]" />
               </Button>
@@ -120,7 +152,7 @@ export default function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-9 w-9 shadow-md cursor-pointer"
+                className="h-10 w-10 shadow-sm cursor-pointer"
               >
                 <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                 <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -134,6 +166,9 @@ export default function Navbar() {
               <DropdownMenuItem onClick={() => setTheme("dark")}>
                 {t("dark")}
               </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("ocean")}>
+                Ocean
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("system")}>
                 {t("system")}
               </DropdownMenuItem>
@@ -145,7 +180,7 @@ export default function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-9 w-9 shadow-md cursor-pointer"
+                className="h-10 w-10 shadow-sm cursor-pointer"
               >
                 <Settings className="h-[1.2rem] w-[1.2rem]" />
               </Button>
@@ -182,9 +217,9 @@ export default function Navbar() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="relative h-9 w-9 rounded-full shadow-md"
+                  className="relative h-10 w-10 rounded-full shadow-sm"
                 >
-                  <Avatar className="h-9 w-9 border transition-opacity hover:opacity-80 shadow-sm cursor-pointer">
+                  <Avatar className="h-10 w-10 border transition-opacity hover:opacity-80 shadow-sm cursor-pointer">
                     <AvatarImage
                       src="https://avatars.githubusercontent.com/u/95624468?v=4"
                       alt="ChickenSoup"
@@ -234,19 +269,21 @@ export default function Navbar() {
             </DialogContent>
           </Dialog>
         </div>
-
         {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center shrink-0">
           <Dialog>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
+                <Button variant="ghost" size="icon" className="h-10 w-10">
+                  <Menu className="h-5 w-5" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuItem asChild>
-                  <Link href="/" className="flex items-center gap-3">
+                  <Link
+                    href="/"
+                    className={`flex items-center gap-3 ${isActive("/") ? "bg-primary text-primary-foreground" : ""}`}
+                  >
                     <Home className="h-4 w-4" />
                     <span>{t("home")}</span>
                   </Link>
@@ -254,7 +291,7 @@ export default function Navbar() {
                 <DropdownMenuItem asChild>
                   <Link
                     href="/featured-projects"
-                    className="flex items-center gap-3"
+                    className={`flex items-center gap-3 ${isActive("/featured-projects") ? "bg-primary text-primary-foreground" : ""}`}
                   >
                     <Star className="h-4 w-4" />
                     <span>{t("featuredProjects")}</span>
@@ -263,7 +300,7 @@ export default function Navbar() {
                 <DropdownMenuItem asChild>
                   <Link
                     href="/other-projects"
-                    className="flex items-center gap-3"
+                    className={`flex items-center gap-3 ${isActive("/other-projects") ? "bg-primary text-primary-foreground" : ""}`}
                   >
                     <List className="h-4 w-4" />
                     <span>{t("otherProjects")}</span>
@@ -300,6 +337,9 @@ export default function Navbar() {
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => setTheme("dark")}>
                         {t("dark")}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setTheme("ocean")}>
+                        Ocean
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => setTheme("system")}>
                         {t("system")}

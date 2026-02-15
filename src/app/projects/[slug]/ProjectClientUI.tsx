@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useLanguage } from "@/app/LanguageContext"
@@ -110,7 +111,12 @@ export default function ProjectClientUI({ project }: { project: any }) {
 
   const transformUrl = (url: string) => {
     if (!url) return ""
-    if (url.startsWith("http") || url.startsWith("https") || url.startsWith("#") || url.startsWith("mailto:")) {
+    if (
+      url.startsWith("http") ||
+      url.startsWith("https") ||
+      url.startsWith("#") ||
+      url.startsWith("mailto:")
+    ) {
       return url
     }
     // Chuyển đổi đường dẫn tương đối thành tuyệt đối của GitHub
@@ -353,76 +359,77 @@ export default function ProjectClientUI({ project }: { project: any }) {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-16 group"
+              className="mt-16"
             >
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl sm:text-3xl font-extrabold flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
-                    <BookOpen className="h-7 w-7" />
+              <div className="flex items-center mb-6">
+                <h2 className="text-2xl sm:text-3xl font-bold flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-muted text-foreground">
+                    <BookOpen className="h-6 w-6" />
                   </div>
                   {t("documentation")}
                 </h2>
-                <div className="h-[2px] flex-grow mx-8 bg-gradient-to-r from-primary/20 via-primary/5 to-transparent hidden sm:block"></div>
               </div>
 
-              <div className="relative rounded-3xl border bg-card/40 backdrop-blur-md overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-primary/5 hover:border-primary/20">
-                {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 -z-10"></div>
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl -ml-24 -mb-24 -z-10"></div>
-
-                <div className="flex items-center gap-2 px-6 py-4 bg-muted/30 border-b text-sm font-medium text-muted-foreground/80">
-                  <FileText className="w-4 h-4 text-primary/60" />
-                  <span>{t("projectReadme")}</span>
-                  <div className="ml-auto flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/30"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/30"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/30"></div>
-                  </div>
+              <div className="relative rounded-lg border bg-card overflow-hidden shadow-sm">
+                <div className="flex items-center gap-2 px-4 py-3 bg-muted border-b text-sm font-medium text-muted-foreground">
+                  <FileText className="w-4 h-4" />
+                  <span>README.md</span>
                 </div>
 
-                <div className="p-6 sm:p-10 md:p-12">
+                <div className="p-6 sm:p-8">
                   {loadingReadme ? (
-                    <div className="flex flex-col items-center justify-center py-20 space-y-6">
+                    <div className="flex flex-col items-center justify-center py-16 space-y-4">
                       <div className="relative">
-                        <div className="h-12 w-12 rounded-full border-4 border-primary/20"></div>
-                        <div className="absolute top-0 h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent shadow-lg shadow-primary/20"></div>
+                        <div className="h-10 w-10 rounded-full border-3 border-muted"></div>
+                        <div className="absolute top-0 h-10 w-10 animate-spin rounded-full border-3 border-foreground border-t-transparent"></div>
                       </div>
-                      <div className="text-center">
-                        <p className="text-lg font-semibold text-foreground animate-pulse">
-                          {t("loading")}...
-                        </p>
-                        <p className="text-sm text-muted-foreground mt-1">
-                          Fetching GitHub content
-                        </p>
-                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {t("loading")}...
+                      </p>
                     </div>
                   ) : (
                     <div
                       className="prose dark:prose-invert max-w-none 
-                      prose-headings:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl
-                      prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:text-lg prose-p:mb-6
-                      prose-a:text-primary prose-a:font-semibold prose-a:no-underline hover:prose-a:underline prose-a:transition-all
-                      prose-code:text-primary prose-code:bg-primary/10 prose-code:px-2 prose-code:py-0.5 prose-code:rounded-md prose-code:font-mono prose-code:before:content-none prose-code:after:content-none prose-code:text-[0.9em]
-                      prose-pre:bg-transparent prose-pre:border-none prose-pre:p-0 prose-pre:shadow-none prose-pre:my-8
-                      prose-img:rounded-3xl prose-img:shadow-2xl prose-img:border prose-img:mx-auto prose-img:my-12 prose-img:max-h-[600px] prose-img:object-contain
-                      prose-ul:list-disc prose-ul:my-6 prose-ul:space-y-2
-                      prose-li:text-muted-foreground prose-li:leading-relaxed
-                      prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:px-8 prose-blockquote:py-4 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:my-8
-                      prose-hr:border-border/60 prose-hr:my-12
-                      prose-table:border-separate prose-table:border-spacing-0 prose-table:w-full prose-table:my-8 prose-table:rounded-2xl prose-table:border prose-table:overflow-hidden
-                      prose-th:bg-muted/80 prose-th:p-4 prose-th:text-left prose-th:font-bold prose-th:first:rounded-tl-2xl prose-th:last:rounded-tr-2xl
-                      prose-td:p-4 prose-td:border-t prose-td:border-border/50"
+                      prose-headings:font-bold prose-headings:text-foreground prose-headings:border-b prose-headings:pb-2 prose-headings:mb-4
+                      prose-h1:text-3xl prose-h1:mt-0 prose-h2:text-2xl prose-h2:mt-6 prose-h3:text-xl prose-h3:mt-4 prose-h3:border-none
+                      prose-p:text-foreground prose-p:leading-7 prose-p:text-base prose-p:my-4
+                      prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+                      prose-code:text-foreground prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-[0.875em] prose-code:before:content-none prose-code:after:content-none prose-code:font-mono
+                      prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:rounded-lg prose-pre:p-0 prose-pre:my-4 prose-pre:overflow-hidden
+                      prose-img:rounded-lg prose-img:border prose-img:border-border prose-img:my-4 prose-img:max-w-full prose-img:h-auto
+                      prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6
+                      prose-ol:my-4 prose-ol:list-decimal prose-ol:pl-6
+                      prose-li:text-foreground prose-li:my-1
+                      prose-blockquote:border-l-4 prose-blockquote:border-muted prose-blockquote:pl-4 prose-blockquote:text-muted-foreground prose-blockquote:italic prose-blockquote:my-4
+                      prose-hr:border-border prose-hr:my-6
+                      prose-table:border-collapse prose-table:w-full prose-table:my-4 prose-table:text-sm
+                      prose-thead:border-b-2 prose-thead:border-border
+                      prose-th:border prose-th:border-border prose-th:bg-muted prose-th:px-3 prose-th:py-2 prose-th:text-left prose-th:font-semibold
+                      prose-td:border prose-td:border-border prose-td:px-3 prose-td:py-2
+                      prose-strong:font-semibold prose-strong:text-foreground
+                      prose-em:italic"
                     >
                       <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
                         rehypePlugins={[rehypeRaw]}
                         components={{
                           a: ({ node, ...props }: any) => (
-                            <a {...props} href={transformUrl(props.href)} target="_blank" rel="noopener noreferrer" className="cursor-pointer" />
+                            <a
+                              {...props}
+                              href={transformUrl(props.href)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="cursor-pointer"
+                            />
                           ),
                           img: ({ node, ...props }: any) => (
                             // eslint-disable-next-line @next/next/no-img-element
-                            <img {...props} src={transformUrl(props.src)} alt={props.alt || "Project image"} className="max-w-full h-auto cursor-zoom-in" onClick={() => setSelectedImage(transformUrl(props.src))} />
+                            <img
+                              {...props}
+                              src={transformUrl(props.src)}
+                              alt={props.alt || "Project image"}
+                              className="max-w-full h-auto"
+                            />
                           ),
                           // eslint-disable-next-line @typescript-eslint/no-unused-vars
                           code({
@@ -434,15 +441,26 @@ export default function ProjectClientUI({ project }: { project: any }) {
                           }: any) {
                             const match = /language-(\w+)/.exec(className || "")
                             return !inline && match ? (
-                              <div className="relative group/code my-8">
-                                <div className="absolute top-4 right-4 z-10 opacity-0 group-hover/code:opacity-100 transition-opacity">
-                                  <Button size="icon" variant="secondary" className="h-8 w-8 bg-background/50 backdrop-blur" onClick={() => navigator.clipboard.writeText(String(children))}>
-                                     <CheckCircle2 className="h-4 w-4" />
+                              <div className="relative group/code my-4">
+                                <div className="absolute top-2 right-2 z-10 opacity-0 group-hover/code:opacity-100 transition-opacity">
+                                  <Button
+                                    size="icon"
+                                    variant="ghost"
+                                    className="h-7 w-7 bg-muted hover:bg-muted/80"
+                                    onClick={() =>
+                                      navigator.clipboard.writeText(
+                                        String(children),
+                                      )
+                                    }
+                                  >
+                                    <CheckCircle2 className="h-3.5 w-3.5" />
                                   </Button>
                                 </div>
-                                <div className="rounded-2xl overflow-hidden border border-border/50 shadow-xl bg-[#1e1e1e]">
-                                  <div className="px-4 py-2 border-b border-white/5 bg-white/5 flex justify-between items-center">
-                                    <span className="text-[10px] font-mono text-muted-foreground uppercase">{match[1]}</span>
+                                <div className="rounded-lg overflow-hidden border border-border bg-muted">
+                                  <div className="px-3 py-1.5 bg-muted border-b border-border flex items-center">
+                                    <span className="text-xs font-mono text-muted-foreground">
+                                      {match[1]}
+                                    </span>
                                   </div>
                                   <SyntaxHighlighter
                                     style={vscDarkPlus}
@@ -450,10 +468,10 @@ export default function ProjectClientUI({ project }: { project: any }) {
                                     PreTag="div"
                                     customStyle={{
                                       margin: 0,
-                                      padding: "1.5rem",
+                                      padding: "1rem",
                                       backgroundColor: "transparent",
-                                      fontSize: "0.9rem",
-                                      lineHeight: "1.6",
+                                      fontSize: "0.875rem",
+                                      lineHeight: "1.5",
                                     }}
                                     {...props}
                                   >
@@ -474,14 +492,6 @@ export default function ProjectClientUI({ project }: { project: any }) {
                     </div>
                   )}
                 </div>
-
-                {/* Bottom Bar */}
-                {!loadingReadme && (
-                  <div className="px-6 py-4 bg-muted/20 border-t flex justify-between items-center text-[10px] uppercase tracking-widest text-muted-foreground/50">
-                    <span>Source: GitHub API / Raw</span>
-                    <span>Ready for Deployment</span>
-                  </div>
-                )}
               </div>
             </motion.section>
           </div>
