@@ -24,7 +24,7 @@ export const projectsData: Project[] = [
     title: "projBookmarkManagerTitle",
     description: "projBookmarkManagerDesc",
     imageUrl:
-      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_114/2.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/1.png?raw=true",
     techStack: ["HTML", "CSS", "JavaScript"],
     content: "projBookmarkManagerContent",
     features: [
@@ -35,14 +35,16 @@ export const projectsData: Project[] = [
       "projBookmarkManagerFeature5",
     ],
     githubUrl: "https://github.com/ChickenSoup269/bookmark-manager",
-    readmeUrl: "https://raw.githubusercontent.com/ChickenSoup269/bookmark-manager/main/README.md",
+    readmeUrl:
+      "https://raw.githubusercontent.com/ChickenSoup269/bookmark-manager/main/README.md",
     liveUrl:
       "https://chromewebstore.google.com/detail/jhcoclfodfnchlddakkeegkogajdpgce?authuser=0&hl=en",
     videoId: "3mcsG_p_j7s",
     gallery: [
-      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_114/1.png?raw=true",
-      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_114/2.png?raw=true",
-      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_114/3.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/1.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/2.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/3.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/4.png?raw=true",
     ],
     featured: true,
   },
@@ -70,7 +72,8 @@ export const projectsData: Project[] = [
       "projZeroMovieFeature5",
     ],
     githubUrl: "https://github.com/ChickenSoup269/Zero_Movie",
-    readmeUrl: "https://raw.githubusercontent.com/ChickenSoup269/Zero_Movie/main/README.md",
+    readmeUrl:
+      "https://raw.githubusercontent.com/ChickenSoup269/Zero_Movie/main/README.md",
     liveUrl: "https://zero-movie-fe-v2.onrender.com/",
     videoId: "Hv5FI1u5by8",
     gallery: [
@@ -104,7 +107,8 @@ export const projectsData: Project[] = [
       "projSteamCloneFeature5",
     ],
     githubUrl: "https://github.com/ChickenSoup269/SteamClone",
-    readmeUrl: "https://raw.githubusercontent.com/ChickenSoup269/SteamClone/master/README.md",
+    readmeUrl:
+      "https://raw.githubusercontent.com/ChickenSoup269/SteamClone/master/README.md",
     videoId: "zZd_RgvPfic",
     gallery: [
       "https://github.com/ChickenSoup269/SteamClone/blob/master/Screenshot/Screenshot%202024-07-09%20020808.png?raw=true",
