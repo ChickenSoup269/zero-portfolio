@@ -24,7 +24,7 @@ export const projectsData: Project[] = [
     title: "projBookmarkManagerTitle",
     description: "projBookmarkManagerDesc",
     imageUrl:
-      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/1.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_120/1.png?raw=true",
     techStack: ["HTML", "CSS", "JavaScript"],
     content: "projBookmarkManagerContent",
     features: [
@@ -39,7 +39,7 @@ export const projectsData: Project[] = [
       "https://raw.githubusercontent.com/ChickenSoup269/bookmark-manager/main/README.md",
     liveUrl:
       "https://chromewebstore.google.com/detail/jhcoclfodfnchlddakkeegkogajdpgce?authuser=0&hl=en",
-    videoId: "3mcsG_p_j7s",
+    videoId: "uMXTcARJxKY",
     gallery: [
       "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_120/1.png?raw=true",
       "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_120/2.png?raw=true",
