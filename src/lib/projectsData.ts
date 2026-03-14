@@ -41,9 +41,9 @@ export const projectsData: Project[] = [
       "https://chromewebstore.google.com/detail/jhcoclfodfnchlddakkeegkogajdpgce?authuser=0&hl=en",
     videoId: "3mcsG_p_j7s",
     gallery: [
-      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/1.png?raw=true",
-      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/2.png?raw=true",
-      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/3.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_120/1.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_120/2.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_120/3.png?raw=true",
       "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_bookmarks/extension_bookmark_119/4.png?raw=true",
     ],
     featured: true,
