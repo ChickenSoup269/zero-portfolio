@@ -88,6 +88,8 @@ const translations = {
     projectReadme: "Project README",
     documentation: "Documentation",
     metaBookmarkManagerRole: "Solo Developer",
+    metaZeroStartPageType: "Browser Extension",
+    metaZeroStartPageRole: "Solo Developer",
     metaZeroMovieType: "University Capstone",
     metaZeroMovieRole: "Frontend Lead",
     metaSteamCloneType: "UI Clone / Practice",
@@ -99,6 +101,22 @@ const translations = {
     bestScoreKey: "Best Score",
 
     // Project Specific Content
+    projZeroStartPageTitle: "Startpage",
+    projZeroStartPageDesc:
+      "A highly customizable Chrome new-tab extension with widgets, animations, media controls, and fully local persistence.",
+    projZeroStartPageContent:
+      "A personalized browser start page built as a Chrome extension without frameworks or a build step. The project focuses on deep customization, strong local-first UX, and a broad set of utilities including search, bookmarks, notes, calendar, media controls, dynamic backgrounds, and dozens of visual effects.",
+    projZeroStartPageFeature1:
+      "Customizable dashboard with clock, smart search, bookmarks, calendar, todo list, notes, timer, and draggable widgets",
+    projZeroStartPageFeature2:
+      "32 canvas-based visual effects plus an SVG wave generator with per-effect customization",
+    projZeroStartPageFeature3:
+      "Music player and visualizer integrated with the Chrome Media Session API across browser tabs",
+    projZeroStartPageFeature4:
+      "Rich personalization: fonts, accent color, backgrounds, uploaded media, layout visibility, and component positioning",
+    projZeroStartPageFeature5:
+      "Local-first architecture with import/export settings, no accounts, and no tracking",
+
     projBookmarkManagerTitle: "Zero Bookmark Manager",
     projBookmarkManagerDesc:
       "An intelligent bookmark management extension to replace the default manager.",
@@ -111,7 +129,8 @@ const translations = {
     projBookmarkManagerFeature5: "Secure JSON data Import/Export",
 
     projZeroMovieTitle: "Zero Movie Theater",
-    projZeroMovieDesc: "A comprehensive online movie ticket booking system (MERN Stack).",
+    projZeroMovieDesc:
+      "A comprehensive online movie ticket booking system (MERN Stack).",
     projZeroMovieContent:
       "A graduation project that completely simulates the operational flow of a movie theater. It includes a Client Side for customers to book tickets and an Admin Dashboard to manage films, showtimes, and revenue.",
     projZeroMovieFeature1: "Real-time seat booking and holding (Socket.io)",
@@ -211,6 +230,8 @@ const translations = {
     projectReadme: "README Dự án",
     documentation: "Tài liệu kỹ thuật",
     metaBookmarkManagerRole: "Solo Developer",
+    metaZeroStartPageType: "Tiện ích mở rộng",
+    metaZeroStartPageRole: "Solo Developer",
     metaZeroMovieType: "Đồ án tốt nghiệp",
     metaZeroMovieRole: "Frontend Lead",
     metaSteamCloneType: "UI Clone / Luyện tập",
@@ -222,19 +243,37 @@ const translations = {
     bestScoreKey: "Kỷ lục",
 
     // Project Specific Content
+    projZeroStartPageTitle: "Startpage",
+    projZeroStartPageDesc:
+      "Extension thay thế tab mới của Chrome với khả năng tùy biến sâu, nhiều widget, hiệu ứng động, điều khiển media và lưu trữ hoàn toàn cục bộ.",
+    projZeroStartPageContent:
+      "Một trang khởi đầu cá nhân hóa cho trình duyệt được xây dựng dưới dạng Chrome extension bằng Vanilla JavaScript, không dùng framework và không cần build step. Dự án tập trung vào trải nghiệm local-first, mức độ tùy biến rất cao và tập hợp nhiều tiện ích như tìm kiếm, bookmark, ghi chú, lịch, media controls, background động và hàng chục hiệu ứng hình ảnh.",
+    projZeroStartPageFeature1:
+      "Dashboard tùy biến với đồng hồ, tìm kiếm thông minh, bookmark, lịch, todo, ghi chú, timer và các widget kéo thả",
+    projZeroStartPageFeature2:
+      "32 hiệu ứng canvas kèm SVG Wave Generator với các tuỳ chọn chỉnh riêng cho từng hiệu ứng",
+    projZeroStartPageFeature3:
+      "Music player và visualizer tích hợp Chrome Media Session API để điều khiển media từ các tab khác",
+    projZeroStartPageFeature4:
+      "Cá nhân hóa sâu với font, accent color, background, media tải lên, toggle hiển thị và lưu vị trí component",
+    projZeroStartPageFeature5:
+      "Kiến trúc local-first với import/export settings, không tài khoản và không theo dõi người dùng",
+
     projBookmarkManagerTitle: "Zero Bookmark Manager",
     projBookmarkManagerDesc:
       "Extension quản lý bookmark thông minh thay thế trình quản lý mặc định.",
     projBookmarkManagerContent:
       "Một tiện ích mở rộng (Extension) giúp người dùng quản lý hàng nghìn bookmark một cách hiệu quả. Dự án tập trung vào trải nghiệm người dùng với giao diện đẹp mắt, tốc độ tìm kiếm cực nhanh và khả năng tùy biến cao.",
-    projBookmarkManagerFeature1: "Tìm kiếm Fuzzy Search (gõ sai vẫn ra kết quả)",
+    projBookmarkManagerFeature1:
+      "Tìm kiếm Fuzzy Search (gõ sai vẫn ra kết quả)",
     projBookmarkManagerFeature2: "Kéo thả (Drag & Drop) để sắp xếp thư mục",
     projBookmarkManagerFeature3: "Chế độ Dark/Light Mode tự động",
     projBookmarkManagerFeature4: "Đồng bộ dữ liệu thời gian thực",
     projBookmarkManagerFeature5: "Import/Export dữ liệu JSON an toàn",
 
     projZeroMovieTitle: "Zero Movie Theater",
-    projZeroMovieDesc: "Hệ thống đặt vé xem phim trực tuyến toàn diện (MERN Stack).",
+    projZeroMovieDesc:
+      "Hệ thống đặt vé xem phim trực tuyến toàn diện (MERN Stack).",
     projZeroMovieContent:
       "Dự án tốt nghiệp mô phỏng hoàn chỉnh quy trình hoạt động của rạp chiếu phim. Bao gồm Client Side cho khách hàng đặt vé và Admin Dashboard để quản lý phim, suất chiếu và doanh thu.",
     projZeroMovieFeature1: "Đặt vé và giữ ghế Realtime (Socket.io)",
@@ -262,7 +301,7 @@ const translations = {
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
+  undefined,
 )
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

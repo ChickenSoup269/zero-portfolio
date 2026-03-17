@@ -2,6 +2,7 @@
 "use client"
 
 import { useLanguage } from "@/app/LanguageContext"
+import type { Project } from "@/lib/projectsData"
 import { useState, useEffect } from "react"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
@@ -42,6 +43,14 @@ const getProjectMeta = (titleKey: string, t: (key: string) => string) => {
       status: t("statusActive"),
     }
   }
+  if (titleKey.includes("StartPage") || titleKey.includes("Startpage")) {
+    return {
+      year: "2026",
+      type: t("metaZeroStartPageType"),
+      role: t("metaZeroStartPageRole"),
+      status: t("statusActive"),
+    }
+  }
   if (titleKey.includes("Movie")) {
     return {
       year: "2025",
@@ -67,8 +76,7 @@ const getProjectMeta = (titleKey: string, t: (key: string) => string) => {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function ProjectClientUI({ project }: { project: any }) {
+export default function ProjectClientUI({ project }: { project: Project }) {
   const { t } = useLanguage()
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [readmeContent, setReadmeContent] = useState<string>("")
@@ -138,7 +146,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
     <div className="relative min-h-screen w-full overflow-hidden bg-background text-foreground">
       {/* 1. BACKGROUND GRADIENTS & GRID (Z-Index thấp nhất) */}
       <div className="fixed inset-0 -z-10 h-full w-full bg-background">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>
         <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 opacity-20 blur-[100px]"></div>
       </div>
 
@@ -179,7 +187,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             {/* Overlay nhẹ */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent"></div>
           </motion.div>
 
           {/* Cột Thông Tin Header */}
@@ -349,7 +357,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
                   >
                     <ChevronRight className="w-6 h-6" />
                   </button>
-                  <div className="absolute right-0 top-0 bottom-4 w-16 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+                  <div className="absolute right-0 top-0 bottom-4 w-16 bg-linear-to-l from-background to-transparent pointer-events-none z-10" />
                 </div>
               </motion.section>
             )}
@@ -413,7 +421,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
                         remarkPlugins={[remarkGfm]}
                         rehypePlugins={[rehypeRaw]}
                         components={{
-                          a: ({ node, ...props }: any) => (
+                          a: ({ ...props }: any) => (
                             <a
                               {...props}
                               href={transformUrl(props.href)}
@@ -422,7 +430,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
                               className="cursor-pointer"
                             />
                           ),
-                          img: ({ node, ...props }: any) => (
+                          img: ({ ...props }: any) => (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img
                               {...props}
@@ -431,14 +439,9 @@ export default function ProjectClientUI({ project }: { project: any }) {
                               className="max-w-full h-auto"
                             />
                           ),
-                          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                          code({
-                            node,
-                            inline,
-                            className,
-                            children,
-                            ...props
-                          }: any) {
+                          code(componentProps: any) {
+                            const { inline, className, children, ...props } =
+                              componentProps
                             const match = /language-(\w+)/.exec(className || "")
                             return !inline && match ? (
                               <div className="relative group/code my-4">
@@ -577,7 +580,7 @@ export default function ProjectClientUI({ project }: { project: any }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 cursor-zoom-out"
+            className="fixed inset-0 z-60 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 cursor-zoom-out"
           >
             <button className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-50">
               <X className="w-8 h-8" />

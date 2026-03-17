@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 // src/lib/projectsData.ts
 
 export interface Project {
@@ -19,6 +17,34 @@ export interface Project {
 }
 
 export const projectsData: Project[] = [
+  {
+    slug: "zero-start-page",
+    title: "projZeroStartPageTitle",
+    description: "projZeroStartPageDesc",
+    imageUrl:
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_Startpage/1.png?raw=true",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    content: "projZeroStartPageContent",
+    videoId: "79UBomayUi0",
+    features: [
+      "projZeroStartPageFeature1",
+      "projZeroStartPageFeature2",
+      "projZeroStartPageFeature3",
+      "projZeroStartPageFeature4",
+      "projZeroStartPageFeature5",
+    ],
+    githubUrl: "https://github.com/ChickenSoup269/Zero-Start-Page",
+    readmeUrl:
+      "https://raw.githubusercontent.com/ChickenSoup269/Zero-Start-Page/main/README.md",
+    gallery: [
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_Startpage/1.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_Startpage/2.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_Startpage/3.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_Startpage/4.png?raw=true",
+      "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_Startpage/5.png?raw=true",
+    ],
+    featured: true,
+  },
   {
     slug: "bookmark-manager",
     title: "projBookmarkManagerTitle",
