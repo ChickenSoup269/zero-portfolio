@@ -44,7 +44,7 @@ const translations = {
     aboutMe: "About Me",
     whoAmI: "Who I Am",
     aboutDesc1:
-      "Hello! I'm ChickenSoup. I am passionate about programming and solving complex problems through code. On my personal GitHub, I frequently share open-source projects and learn from the community.",
+      "Hello! I'm Trần Phước Thiện. I am passionate about programming and solving complex problems through code. On my personal GitHub, I frequently share open-source projects and learn from the community.",
     aboutDesc2:
       "I believe that 'Code is poetry' and always strive to write clean, maintainable, and optimized code. When not coding, I enjoy exploring system architecture and AI.",
     repositories: "Repositories",
@@ -186,7 +186,7 @@ const translations = {
     aboutMe: "Về Tôi",
     whoAmI: "Tôi Là Ai",
     aboutDesc1:
-      "Xin chào! Tôi là ChickenSoup. Tôi đam mê lập trình và giải quyết các vấn đề phức tạp thông qua code. Trên GitHub cá nhân, tôi thường xuyên chia sẻ các dự án mã nguồn mở và học hỏi từ cộng đồng.",
+      "Xin chào! Tôi là Trần Phước Thiện. Tôi đam mê lập trình và giải quyết các vấn đề phức tạp thông qua code. Trên GitHub cá nhân, tôi thường xuyên chia sẻ các dự án mã nguồn mở và học hỏi từ cộng đồng.",
     aboutDesc2:
       "Tôi tin rằng 'Code là thơ' và luôn cố gắng viết code sạch, dễ bảo trì và tối ưu. Khi không code, tôi thích tìm hiểu về kiến trúc hệ thống và AI.",
     repositories: "Kho Chứa (Repos)",

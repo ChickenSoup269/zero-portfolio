@@ -24,7 +24,8 @@ import {
   Gitlab,
 } from "lucide-react"
 import Image from "next/image"
-import aboutImage from "./image/about.png"
+import aboutImage from "./image/about2.jpg"
+import avtImage from "./image/avt.jpg"
 import PixelRain from "@/components/PixelRain"
 import PixelWar from "@/components/PixelWar"
 import PixelSnake from "@/components/PixelSnake"
@@ -63,7 +64,14 @@ const fadeIn: Variants = {
 
 export default function Home() {
   const { t } = useLanguage() // Gọi hook useLanguage
-  const { animation, isBossActive, isGameOver, isVictory, currentScore, gameController } = useAnimation()
+  const {
+    animation,
+    isBossActive,
+    isGameOver,
+    isVictory,
+    currentScore,
+    gameController,
+  } = useAnimation()
 
   // Move data inside component to use translation "t"
   const skills = [
@@ -125,15 +133,21 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="bg-background/80 backdrop-blur-md p-10 rounded-3xl border-2 border-primary/20 shadow-2xl inline-block"
             >
-              <h1 className={`text-6xl md:text-8xl font-extrabold tracking-tight mb-4 ${isVictory ? "text-primary italic animate-pulse" : "text-destructive"}`}>
+              <h1
+                className={`text-6xl md:text-8xl font-extrabold tracking-tight mb-4 ${isVictory ? "text-primary italic animate-pulse" : "text-destructive"}`}
+              >
                 {isVictory ? t("victory") : "GAME OVER"}
               </h1>
               <div className="mb-8 space-y-2">
                 <p className="text-2xl text-muted-foreground uppercase tracking-widest font-bold">
-                  {t("yourScore")}: <span className="text-primary">{currentScore}</span>
+                  {t("yourScore")}:{" "}
+                  <span className="text-primary">{currentScore}</span>
                 </p>
                 <p className="text-sm text-muted-foreground/60 font-medium">
-                  {t("bestScoreKey")}: {typeof window !== "undefined" ? localStorage.getItem("pixelWarBestScore") || 0 : 0}
+                  {t("bestScoreKey")}:{" "}
+                  {typeof window !== "undefined"
+                    ? localStorage.getItem("pixelWarBestScore") || 0
+                    : 0}
                 </p>
               </div>
               <Button
@@ -145,7 +159,8 @@ export default function Home() {
               </Button>
             </motion.div>
           ) : (
-            animation !== "war" && !isBossActive && (
+            animation !== "war" &&
+            !isBossActive && (
               <>
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
@@ -153,13 +168,15 @@ export default function Home() {
                   transition={{ type: "spring", stiffness: 260, damping: 20 }}
                   className="mb-8 inline-block"
                 >
-                  <div className="p-1 rounded-full bg-gradient-to-tr from-primary to-blue-800 shadow-xl">
-                    <Avatar className="h-32 w-32 border-4 border-background">
+                  <div className="p-[3px] rounded-full bg-gradient-to-tr from-primary via-blue-500 to-blue-800 shadow-xl">
+                    <Avatar className="h-32 w-32 border-4 border-background overflow-hidden">
                       <AvatarImage
-                        src="https://avatars.githubusercontent.com/u/95624468?v=4"
+                        className="w-full h-full object-cover object-center"
+                        src={
+                          typeof avtImage === "string" ? avtImage : avtImage.src
+                        }
                         alt="ChickenSoup269"
                       />
-                      <AvatarFallback>CS</AvatarFallback>
                     </Avatar>
                   </div>
                 </motion.div>
@@ -172,7 +189,7 @@ export default function Home() {
                 >
                   {t("hiIm")}{" "}
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-orange-400 animate-gradient">
-                    ChickenSoup
+                    Trần Phước Thiện
                   </span>
                 </motion.h1>
 
@@ -333,7 +350,7 @@ export default function Home() {
               </span>
             </div>
             <div className="flex flex-col p-4 bg-muted/50 rounded-xl border">
-              <span className="text-3xl font-bold text-primary">2+</span>
+              <span className="text-3xl font-bold text-primary">0+</span>
               <span className="text-sm text-muted-foreground">
                 {t("yearsExp")}
               </span>
