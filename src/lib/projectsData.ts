@@ -36,6 +36,8 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/ChickenSoup269/Zero-Start-Page",
     readmeUrl:
       "https://raw.githubusercontent.com/ChickenSoup269/Zero-Start-Page/main/README.md",
+    liveUrl:
+      "https://chromewebstore.google.com/detail/zero-startpage-newtab-rep/ogdbkgoionmjnlinbmmjncnhafhaenck?hl=en&authuser=0",
     gallery: [
       "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_Startpage/1.png?raw=true",
       "https://github.com/ChickenSoup269/imagesForRepo/blob/main/img_repo_extension_Startpage/2.png?raw=true",
