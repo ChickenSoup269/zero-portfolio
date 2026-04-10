@@ -12,7 +12,7 @@ import logoImage from "@/app/image/logo.png"
 export default function Footer() {
   const { t } = useLanguage()
   const [copied, setCopied] = useState(false)
-  const email = "tranphuocthien2692003@gmail.com"
+  const email = "thientran01345@icloud.com"
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email)

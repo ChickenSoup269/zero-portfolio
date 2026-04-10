@@ -50,7 +50,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Image from "next/image"
-import CV from "@/app/image/CV.png"
+// import CV from "@/app/image/CV.png"
 import logo from "@/app/image/logo2.png"
 
 export default function Navbar() {
@@ -263,9 +263,9 @@ export default function Navbar() {
                 <DialogTitle>{t("cvTitle")}</DialogTitle>
                 <DialogDescription>{t("cvDesc")}</DialogDescription>
               </DialogHeader>
-              <div className="flex-1 overflow-auto bg-muted/20 p-4 flex items-center justify-center">
+              {/* <div className="flex-1 overflow-auto bg-muted/20 p-4 flex items-center justify-center">
                 <Image width={400} height={400} src={CV} alt="cv" />
-              </div>
+              </div> */}
             </DialogContent>
           </Dialog>
         </div>
@@ -384,9 +384,9 @@ export default function Navbar() {
                 <DialogTitle>{t("cvTitle")}</DialogTitle>
                 <DialogDescription>{t("cvDesc")}</DialogDescription>
               </DialogHeader>
-              <div className="flex-1 overflow-auto bg-muted/20 p-4 flex items-center justify-center">
+              {/* <div className="flex-1 overflow-auto bg-muted/20 p-4 flex items-center justify-center">
                 <Image width={400} height={400} src={CV} alt="cv" />
-              </div>
+              </div> */}
             </DialogContent>
           </Dialog>
         </div>
